@@ -83,7 +83,7 @@ void		random_generate(Player *p, Enemy *horde, Object *objs )
 			seed = rand() % MAX_ENEMY;
 			if ( horde[seed].getChp() )
 			{
-				col::createObject( objs, horde[seed].getX(), horde[seed].getY() + 1, "eShot" );
+				horde[seed].shoot(objs);
 				col::checkHit(p, horde, objs);
 			}
 			break;
@@ -102,6 +102,24 @@ void		random_generate(Player *p, Enemy *horde, Object *objs )
 	}
 }
 
+int			getFrameRate(Player *p)
+{
+	int playerScore = p->getScore();
+	if (playerScore <= 100)
+		return (90);
+	else if (playerScore <= 200)
+		return (80);
+	if (playerScore <= 350)
+		return (70);
+	if (playerScore <= 500)
+		return (60);
+	if (playerScore <= 1000)
+		return (40);
+	else if (playerScore <= 2000)
+		return (20);
+	return (40);
+}
+
 void		main_loop( Player *p, Enemy *horde, Object *objs )
 {
 	int				action;
@@ -118,7 +136,7 @@ void		main_loop( Player *p, Enemy *horde, Object *objs )
 		gettimeofday(&end, NULL);
 		if (st.tv_usec < end.tv_usec)
 			st.tv_usec = end.tv_usec;;
-		usleep( ( FRAMERATE * 1000 ) - ( end.tv_usec - st.tv_usec ) );
+		usleep( ( getFrameRate(p) * 1000 ) - ( end.tv_usec - st.tv_usec ) );
 	    scr_upd( p, horde, objs );
 	}
 }

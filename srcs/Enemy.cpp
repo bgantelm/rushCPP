@@ -7,6 +7,8 @@ Enemy::Enemy(void) : Vessel() {
 	this->_chp = 0;
 	this->_dmg = 1;
 	this->_armor = 0;
+	if (this->printType() == ENEMY_STRONGER)
+		this->_dmg = 2;
 }
 
 Enemy::Enemy(int x, int y) : Vessel() {
@@ -75,15 +77,15 @@ void Enemy::randomMoove() {
 	}
 	else if (type == ENEMY_FASTER)
 	{
-		switch ( random() % 10 )
+		switch ( random() % 4 )
 		{
 			case		1:
-				if ( this->getX() - 3 > 0 )
-					this->setX( this->getX() - 3 );
+				if ( this->getX() - 2 > 0 )
+					this->setX( this->getX() - 2 );
 				break;
 			case		2:
-				if ( this->getX() + 3 < MAX_W )
-					this->setX( this->getX() + 3 );
+				if ( this->getX() + 2 < MAX_W )
+					this->setX( this->getX() + 2 );
 				break;
 			default:
 				break;
@@ -123,4 +125,9 @@ std::string Enemy::printType() const
 void Enemy::setType(std::string type)
 {
 	this->type = type;
+}
+
+void Enemy::shoot(Object *objs)
+{
+	col::createObject(objs, this->getX(), this->getY() + 1, "eShot");
 }

@@ -2,6 +2,7 @@
 #define ENEMY_HPP
 
 #include "Vessel.hpp"
+#include "Object.hpp"
 
 class Enemy : public Vessel
 {
@@ -21,6 +22,7 @@ class Enemy : public Vessel
 		std::string printType() const;
 		std::string getRandomType();
 		void setType(std::string);
+		void shoot(Object *objs);
 	private:
 		std::string type;
 };
