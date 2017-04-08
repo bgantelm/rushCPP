@@ -7,11 +7,11 @@
 #include <stdlib.h>
 #include <sys/time.h>
 
-#include "../src/IEntity.hpp"
-#include "../src/Vessel.hpp"
-#include "../src/Player.hpp"
-#include "../src/Enemy.hpp"
-#include "../src/Object.hpp"
+#include "../srcs/IEntity.hpp"
+#include "../srcs/Vessel.hpp"
+#include "../srcs/Player.hpp"
+#include "../srcs/Enemy.hpp"
+#include "../srcs/Object.hpp"
 #include "data.hpp"
 #include "screen.hpp"
 #include "actions.hpp"

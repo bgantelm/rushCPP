@@ -40,11 +40,11 @@ void		apply_action( int action, Player *p, Object *objs )
 	{
 		case ACTION_MOVE_LEFT:
 			if ( p->getX() > 0 )
-      			p->setX( p->getX() - 1 );
+      			p->setX( p->getX() - 2 );
       		break;
 	    case ACTION_MOVE_RIGHT:
 	    	if ( p->getX() < MAX_W )
-    	  		p->setX( p->getX() + 1 );
+    	  		p->setX( p->getX() + 2 );
       		break;
       	case ACTION_MOVE_UP:
 			if ( p->getY() > 0 )

@@ -18,8 +18,8 @@ void			data_init( void );
 void			game_over( Player *p );
 
 # define PLAYER		"<(^)>"
-# define ENEMY		"<()>"
-# define OBSTACLE	"O"
+# define ENEMY		"<(-)>"
+# define OBSTACLE	"X"
 # define ESHOT		"|"
 # define FSHOT		"|"
 # define MAX_ENEMY 	20
