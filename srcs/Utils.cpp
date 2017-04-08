@@ -9,7 +9,11 @@ int col::checkCol(Player * a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 				((a->getX() + 2 == b[i].getX())  && (a->getY() == b[i].getY())) ||
 				((a->getX() == b[i].getX())  && (a->getY() == b[i].getY())) ||
 				((a->getX() + 3 == b[i].getX())  && (a->getY() == b[i].getY())) ||
-				((a->getX() + 4 == b[i].getX())  && (a->getY() == b[i].getY())))
+				((a->getX() + 4 == b[i].getX())  && (a->getY() == b[i].getY())) ||
+				((a->getX() == b[i].getX() + 1)  && (a->getY() == b[i].getY())) ||
+				((a->getX() == b[i].getX() + 2)  && (a->getY() == b[i].getY())) ||
+				((a->getX() == b[i].getX() + 3)  && (a->getY() == b[i].getY())) ||
+				((a->getX() == b[i].getX() + 3)  && (a->getY() == b[i].getY())))
 			return (1);
 		i++;
 	}
@@ -26,6 +30,7 @@ int col::checkCol(Player * a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 	}
 	return (0);
 }
+
 
 void col::updatePos(Player *a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 {
