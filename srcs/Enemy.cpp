@@ -1,7 +1,7 @@
 #include "header.hpp"
 
 Enemy::Enemy(void) : Vessel() {
-	this->_x = 4;
+	this->_x = 5;
 	this->_y = 1;
 	this->_chp = 0;
 	this->_dmg = 1;

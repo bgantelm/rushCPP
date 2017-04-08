@@ -13,7 +13,7 @@ int col::checkCol(Player * a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 				((a->getX() == b[i].getX() + 1)  && (a->getY() == b[i].getY())) ||
 				((a->getX() == b[i].getX() + 2)  && (a->getY() == b[i].getY())) ||
 				((a->getX() == b[i].getX() + 3)  && (a->getY() == b[i].getY())) ||
-				((a->getX() == b[i].getX() + 3)  && (a->getY() == b[i].getY())))
+				((a->getX() == b[i].getX() + 4)  && (a->getY() == b[i].getY())))
 			return (1);
 		i++;
 	}
