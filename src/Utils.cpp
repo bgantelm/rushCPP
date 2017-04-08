@@ -25,8 +25,6 @@ int col::checkCol(Player * a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 
 void col::updatePos(Player *a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 {
-
-	// fShot = user shot, eShot = Enemy shot, obstacle = obstacle lool //
 	int i = 0;
 	while (i < MAX_ENEMY)
 	{
@@ -125,7 +123,7 @@ void col::checkPos(Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 
 	while (i < MAX_OBJECT)
 	{
-		if (c[i].getY() > MAX_H || c[i].getY() < 0) // < 0 pour le tir player qui monte //
+		if (c[i].getY() > MAX_H || c[i].getY() < 0)
 			c[i].setChp(0);
 		i++;
 	}

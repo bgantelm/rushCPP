@@ -2,7 +2,6 @@
 
 void		print_score( int score, int life )
 {
-	/* HUD. */
 	start_color();
 		init_pair(6, COLOR_CYAN, COLOR_BLACK);
 	attron(COLOR_PAIR(6));
@@ -20,25 +19,16 @@ void		scr_end( void )
 void		scr_upd( Player *p, Enemy *horde, Object *objs )
 {
 	int colision;
-	/* clear window */
 	erase();
 	start_color();
-		init_pair(7, COLOR_GREEN, COLOR_BLACK);
-	/* Position cursor on player. */
+	init_pair(7, COLOR_GREEN, COLOR_BLACK);
 	attron(COLOR_PAIR(7));
-
 	mvprintw( p->getY(), p->getX(), PLAYER );
 	attroff(COLOR_PAIR(7));
 
-	//move( p->getY(), p->getX() );
-
-
-	/* Check enemies and projectiles */
 	col::checkPos( horde, objs );
 
-	/* Check projecitles collision */
 	col::checkHit( p, horde, objs );
-
 
 	colision = col::checkCol( p, horde, objs );
 	if (colision == 1 || colision == 2)
@@ -49,8 +39,6 @@ void		scr_upd( Player *p, Enemy *horde, Object *objs )
 	}
 
 	col::updatePos(p,  horde, objs );
-	/* Update enemies and projectiles */
-
 
 	print_score( p->getScore(), p->getChp() );
 	refresh();
@@ -61,7 +49,7 @@ void		scr_init( void )
 	int			max_y, max_x;
 
 	initscr();
-	curs_set(0); /* Hide cursor */
+	curs_set(0);
 	start_color();
     use_default_colors();
 	getmaxyx(stdscr, max_y, max_x);

@@ -112,8 +112,6 @@ void		main_loop( Player *p, Enemy *horde, Object *objs )
 		apply_action( action, p, objs );
 		random_generate(p,  horde, objs );
 		p->setScore ( p->getScore() + 1 );
-		// scroll_objects( horde, objs );
-		/* Redraw screen. -> give array of instance */
 		gettimeofday(&end, NULL);
 		if (st.tv_usec < end.tv_usec)
 			st.tv_usec = end.tv_usec;;
