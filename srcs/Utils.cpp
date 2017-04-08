@@ -7,7 +7,9 @@ int col::checkCol(Player * a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 	{
 		if (((a->getX() + 1 == b[i].getX())  && (a->getY() == b[i].getY())) ||
 				((a->getX() + 2 == b[i].getX())  && (a->getY() == b[i].getY())) ||
-				((a->getX() == b[i].getX())  && (a->getY() == b[i].getY())))
+				((a->getX() == b[i].getX())  && (a->getY() == b[i].getY())) ||
+				((a->getX() + 3 == b[i].getX())  && (a->getY() == b[i].getY())) ||
+				((a->getX() + 4 == b[i].getX())  && (a->getY() == b[i].getY())))
 			return (1);
 		i++;
 	}
@@ -16,7 +18,9 @@ int col::checkCol(Player * a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 	{
 		if (((a->getX() + 1 == c[i].getX())  && (a->getY() == c[i].getY())) ||
 				((a->getX() + 2 == c[i].getX())  && (a->getY() == c[i].getY())) ||
-				((a->getX()  == c[i].getX())  && (a->getY() == c[i].getY())))
+				((a->getX()  == c[i].getX())  && (a->getY() == c[i].getY())) ||
+				((a->getX() + 3 == c[i].getX())  && (a->getY() == c[i].getY())) ||
+				((a->getX() + 4 == c[i].getX())  && (a->getY() == c[i].getY())))
 			return (2);
 		i++;
 	}
