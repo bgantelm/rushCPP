@@ -18,6 +18,11 @@ class Enemy : public Vessel
 		void collision();
 		void shoot();
 		void randomMoove();
+		std::string printType() const;
+		std::string getRandomType();
+		void setType(std::string);
+	private:
+		std::string type;
 };
 
 #endif

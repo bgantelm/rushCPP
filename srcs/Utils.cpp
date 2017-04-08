@@ -44,7 +44,7 @@ void col::updatePos(Player *a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 			start_color();
 			init_pair(1, COLOR_RED, COLOR_BLACK);
 			attron(COLOR_PAIR(1));
-			mvprintw( b[i].getY(), b[i].getX(), ENEMY );
+			mvprintw( b[i].getY(), b[i].getX(), b[i].printType().c_str() );
 			attroff(COLOR_PAIR(1));
 			col::checkHit(a, b, c);
 		}

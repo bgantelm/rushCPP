@@ -17,13 +17,15 @@ typedef enum
 void			data_init( void );
 void			game_over( Player *p );
 
-# define PLAYER		"<(^)>"
-# define ENEMY		"<(-)>"
-# define OBSTACLE	"X"
-# define ESHOT		"|"
-# define FSHOT		"|"
-# define MAX_ENEMY 	20
-# define MAX_OBJECT 80
-# define FRAMERATE  40
+# define PLAYER				"<(^)>"
+# define ENEMY_DEFAULT		"<(-)>"
+# define ENEMY_FASTER       "<***>"
+# define ENEMY_STRONGER		"<[!]>"
+# define OBSTACLE			"X"
+# define ESHOT				"|"
+# define FSHOT				"|"
+# define MAX_ENEMY 			20
+# define MAX_OBJECT 		80
+# define FRAMERATE  		80
 
 #endif

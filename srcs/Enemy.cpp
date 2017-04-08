@@ -1,6 +1,7 @@
 #include "header.hpp"
 
 Enemy::Enemy(void) : Vessel() {
+	this->setType(this->getRandomType());
 	this->_x = 5;
 	this->_y = 1;
 	this->_chp = 0;
@@ -55,16 +56,71 @@ void Enemy::shoot() {
 }
 
 void Enemy::randomMoove() {
-	switch ( random() % 20 ) {
-		case		1:
-			if ( this->getX() - 1 > 0 )
-				this->setX( this->getX() - 1 );
-			break;
-		case		2:
-			if ( this->getX() + 1 < MAX_W )
-				this->setX( this->getX() + 1 );
-			break;
-		default:
-			break;
+	std::string type = this->printType();
+	if (type == ENEMY_DEFAULT)
+	{
+		switch ( random() % 20 )
+		{
+			case		1:
+				if ( this->getX() - 1 > 0 )
+					this->setX( this->getX() - 1 );
+				break;
+			case		2:
+				if ( this->getX() + 1 < MAX_W )
+					this->setX( this->getX() + 1 );
+				break;
+			default:
+				break;
+		}
 	}
+	else if (type == ENEMY_FASTER)
+	{
+		switch ( random() % 10 )
+		{
+			case		1:
+				if ( this->getX() - 3 > 0 )
+					this->setX( this->getX() - 3 );
+				break;
+			case		2:
+				if ( this->getX() + 3 < MAX_W )
+					this->setX( this->getX() + 3 );
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+std::string Enemy::getRandomType()
+{
+	int type = random() % 3;
+	switch (type)
+	{
+		case	0:
+			return (ENEMY_DEFAULT);
+		break;
+
+		case	1:
+			return (ENEMY_FASTER);
+		break;
+
+		case	2:
+			return (ENEMY_STRONGER);
+		break;
+		
+		default:
+			return (ENEMY_DEFAULT);
+		break;
+	}
+	return (ENEMY_DEFAULT);
+}
+
+std::string Enemy::printType() const
+{
+	return (this->type);
+}
+
+void Enemy::setType(std::string type)
+{
+	this->type = type;
 }

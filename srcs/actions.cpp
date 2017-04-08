@@ -42,7 +42,7 @@ void		apply_action( int action, Player *p, Object *objs )
 	switch ( action )
 	{
 		case ACTION_MOVE_LEFT:
-			if ( p->getX() > 0 )
+			if ( (p->getX() - 2) > 0 )
       			p->setX( p->getX() - 2 );
       		break;
 	    case ACTION_MOVE_RIGHT:
