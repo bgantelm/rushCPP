@@ -22,10 +22,12 @@ void			game_over( Player *p );
 # define ENEMY_FASTER       "<***>"
 # define ENEMY_STRONGER		"<[!]>"
 # define OBSTACLE			"X"
+# define REGEN              "+"
 # define ESHOT				"|"
 # define FSHOT				"|"
 # define MAX_ENEMY 			20
 # define MAX_OBJECT 		80
 # define FRAMERATE  		80
+# define MAX_REGEN			1
 
 #endif

@@ -11,7 +11,7 @@ void		get_action( int *action , Player *p)
 			{
 				case	KEY_RESIZE:
 					getmaxyx(stdscr, max_y, max_x);
-					p->setX(5);
+					p->setX(p->getX());
 					p->setY((max_y - 2));
 					break;
 				case KEY_LEFT:
@@ -70,6 +70,19 @@ void		apply_action( int action, Player *p, Object *objs )
 	}
 }
 
+int			countAliveRegen(Object *objs)
+{
+	int alive = 0, i = 0;
+	while (i < MAX_OBJECT)
+	{
+		if (objs[i].getType() == "regen" \
+			&& objs[i].getChp() > 0)
+			alive++;
+		i++;
+	}
+	return (alive);
+}
+
 void		random_generate(Player *p, Enemy *horde, Object *objs )
 {
 	int		seed;
@@ -96,6 +109,12 @@ void		random_generate(Player *p, Enemy *horde, Object *objs )
 			}
 			break;
 		case		3:
+			if (count < (MAX_OBJECT - 20) && countAliveRegen(objs) <= MAX_REGEN)
+			{
+				count++;
+				col::createObject( objs, random() % MAX_W, 0, "regen");
+				col::checkHit(p, horde, objs);
+			}
 			break;
 		default:
 			break;
@@ -117,7 +136,7 @@ int			getFrameRate(Player *p)
 		return (40);
 	else if (playerScore <= 2000)
 		return (20);
-	return (40);
+	return (20);
 }
 
 void		main_loop( Player *p, Enemy *horde, Object *objs )

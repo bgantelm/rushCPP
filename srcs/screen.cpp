@@ -33,6 +33,8 @@ void		scr_upd( Player *p, Enemy *horde, Object *objs )
 	colision = col::checkCol( p, horde, objs );
 	if (colision == 1 || colision == 2)
 		p->setChp(p->getChp() - 1);
+	else if (colision == 3)
+		p->setChp(p->getChp() + 1);
 	if (p->getChp() <= 0)
 	{
 		game_over( p );

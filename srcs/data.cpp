@@ -3,14 +3,16 @@
 void		game_over( Player *p )
 {
 	int		c = 0;
+	int			max_y, max_x;
 
+	getmaxyx(stdscr, max_y, max_x);
 	erase();
 	clear();
 	start_color();
 		init_pair(7, COLOR_MAGENTA, COLOR_BLACK);
 	attron(COLOR_PAIR(7));
-	mvprintw( MAX_H / 2, MAX_W / 2, "||||||||||||||||||||||||||||||||||||||||||	Game Over !! Score: %5d	||||||||||||||||||||||||||||||||||||||||||", p->getScore() );
-	mvprintw( MAX_H / 2 + 1, MAX_W / 2, "||||||||||||||||||||||||||||||||||||||||||	Replay: r	Quit: q		||||||||||||||||||||||||||||||||||||||||||", p->getScore() );
+	mvprintw( max_y / 2, (max_x / 2) - 60, "||||||||||||||||||||||||||||||||||||||||||	Game Over :(    Score: %2d	||||||||||||||||||||||||||||||||||||||||||", p->getScore() );
+	mvprintw( max_y / 2 + 1, (max_x / 2) - 60, "||||||||||||||||||||||||||||||||||||||||||	Replay: r	Quit: q		||||||||||||||||||||||||||||||||||||||||||", p->getScore() );
 	attroff(COLOR_PAIR(7));
 	refresh();
 	while ( c != 'r' && c != 'q' )

@@ -25,7 +25,15 @@ int col::checkCol(Player * a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 				((a->getX()  == c[i].getX())  && (a->getY() == c[i].getY())) ||
 				((a->getX() + 3 == c[i].getX())  && (a->getY() == c[i].getY())) ||
 				((a->getX() + 4 == c[i].getX())  && (a->getY() == c[i].getY())))
-			return (2);
+		{
+			if (c[i].getType() == "obstacle")
+				return (2);
+			else if (c[i].getType() == "regen" && c[i].getChp() > 0)
+			{
+				c[i].setChp(0);
+				return (3);
+			}
+		}
 		i++;
 	}
 	return (0);
@@ -55,7 +63,8 @@ void col::updatePos(Player *a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 	{
 		if ( c[i].getChp() > 0 )
 		{
-			if (c[i].getType() == "obstacle" || c[i].getType() == "eShot")
+			if (c[i].getType() == "obstacle" || c[i].getType() == "eShot" \
+				|| c[i].getType() == "regen")
 			{
 				c[i] += 1;
 				if ( c[i].getType() == "obstacle" )
@@ -67,7 +76,7 @@ void col::updatePos(Player *a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 					attroff(COLOR_PAIR(3));
 					col::checkHit(a, b, c);
 				}
-				else
+				else if (c[i].getType() == "eShot")
 				{
 					start_color();
 					init_pair(4, COLOR_RED, COLOR_BLACK);
@@ -85,15 +94,24 @@ void col::updatePos(Player *a, Enemy b[MAX_ENEMY], Object c[MAX_OBJECT])
 							attroff(COLOR_PAIR(4));
 					col::checkHit(a, b, c);
 				}
+				else if (c[i].getType() == "regen")
+				{
+					start_color();
+					init_pair(5, COLOR_GREEN, COLOR_BLACK);
+					attron(COLOR_PAIR(5));
+					mvprintw( c[i].getY(), c[i].getX(), REGEN );
+					attroff(COLOR_PAIR(5));
+					col::checkHit(a, b, c);
+				}
 			}
 			else if (c[i].getType() == "fShot")
 			{
 				c[i] -= 1;
 				start_color();
-				init_pair(5, COLOR_GREEN, COLOR_BLACK);
-				attron(COLOR_PAIR(5));
+				init_pair(6, COLOR_GREEN, COLOR_BLACK);
+				attron(COLOR_PAIR(6));
 				mvprintw( c[i].getY(), c[i].getX(), FSHOT );
-						attroff(COLOR_PAIR(5));
+						attroff(COLOR_PAIR(6));
 				col::checkHit(a, b, c);
 			}
 		}
