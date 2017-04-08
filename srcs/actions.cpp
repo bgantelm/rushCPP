@@ -1,8 +1,8 @@
 #include "header.hpp"
 
-void		get_action( int *action )
+void		get_action( int *action , Player *p)
 {
-	int		c = 0;
+	int		c = 0, max_y, max_x;
 	*action = 0;
 
 	while ( (c = getch() ) != ERR )
@@ -10,7 +10,10 @@ void		get_action( int *action )
 			switch ( c )
 			{
 				case	KEY_RESIZE:
-					exit(0);
+					getmaxyx(stdscr, max_y, max_x);
+					p->setX(5);
+					p->setY((max_y - 2));
+					break;
 				case KEY_LEFT:
 			        *action = ACTION_MOVE_LEFT;
 			        break;
@@ -108,7 +111,7 @@ void		main_loop( Player *p, Enemy *horde, Object *objs )
 	while ( 42 )
 	{
 		gettimeofday(&st, NULL);
-		get_action( &action );
+		get_action( &action , p);
 		apply_action( action, p, objs );
 		random_generate(p,  horde, objs );
 		p->setScore ( p->getScore() + 1 );

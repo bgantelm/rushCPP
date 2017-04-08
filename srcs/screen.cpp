@@ -53,12 +53,6 @@ void		scr_init( void )
 	start_color();
     use_default_colors();
 	getmaxyx(stdscr, max_y, max_x);
-	if ( max_x < MAX_W || max_y < MAX_H + 1 )
-	{
-		endwin();
-		std::cout << "You need to be in fullscreen for play, sorry !" << std::endl;
-		exit(0);
-	}
 	atexit( scr_end );
 	noecho();
 	keypad(stdscr, TRUE);

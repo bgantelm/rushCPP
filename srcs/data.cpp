@@ -29,11 +29,15 @@ void		game_over( Player *p )
 
 void			data_init()
 {
-	Player		*p = new Player;
+	int			max_y, max_x;
+
+	Player		*p = new Player();
 	Enemy		*horde = new Enemy[MAX_ENEMY];
 	Object		*objs = new Object[MAX_OBJECT];
 
 	scr_init();
+	getmaxyx(stdscr, max_y, max_x);
+	p->setY((max_y - 2));
 	scr_upd( p, horde, objs );
 	main_loop( p, horde, objs );
 }
